@@ -4,13 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -26,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
@@ -61,7 +65,7 @@ class DetailsActivity : ComponentActivity() {
                         rememberAsyncImagePainter(model = Constants.IMAGE_URL + movie.backdrop_path)
                     Box(
                         modifier = Modifier
-                            .padding(16.dp)
+                            .padding(start = 8.dp, end = 8.dp)
                     ) {
                         Column(
                             modifier = Modifier
@@ -72,7 +76,7 @@ class DetailsActivity : ComponentActivity() {
                                 text = movie.title,
                                 modifier = Modifier,
                                 style = MaterialTheme.typography.displaySmall.copy(
-
+                                    fontWeight = FontWeight.Bold
                                 )
                             )
                             Box(modifier = Modifier) {
@@ -88,16 +92,61 @@ class DetailsActivity : ComponentActivity() {
                                 Image(
                                     painter = image,
                                     modifier = Modifier
-                                        .fillMaxWidth()
+                                        .width(200.dp)
+                                        .height(250.dp)
                                         .align(Alignment.Center)
                                         .clip(RoundedCornerShape(4.dp)),
                                     contentDescription = null
                                 )
                             }
+
+                            Text(
+                                text = getString(R.string.overview),
+                                modifier = Modifier.padding(8.dp),
+                                style = MaterialTheme.typography.headlineMedium
+                            )
                             Text(text = movie.overview)
+                            Row(
+                                horizontalArrangement = Arrangement.Start,
+                                verticalAlignment = Alignment.Bottom,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp)
+                            ) {
+                                Text(
+                                    text = getString(R.string.release_date),
+                                    modifier = Modifier,
+                                    style = MaterialTheme.typography.bodyLarge.copy(
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                )
+                                Text(
+                                    text = movie.release_date,
+                                    modifier = Modifier.padding(start = 16.dp)
+                                )
+                            }
+                            Row(
+                                horizontalArrangement = Arrangement.Start,
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp)
+                            ) {
+                                Text(
+                                    text = getString(R.string.rating),
+                                    modifier = Modifier,
+                                    style = MaterialTheme.typography.bodyLarge.copy(
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                )
+                                Text(
+                                    text = movie.vote_average.toString(),
+                                    modifier = Modifier.padding(start = 16.dp)
+                                )
+                            }
                             Text(
                                 text = getString(R.string.cast),
-                                modifier = Modifier.padding(8.dp),
+                                modifier = Modifier.padding(start = 8.dp, bottom = 16.dp),
                                 style = MaterialTheme.typography.headlineMedium
                             )
                             LazyRow(

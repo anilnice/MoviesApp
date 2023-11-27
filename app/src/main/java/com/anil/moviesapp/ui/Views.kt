@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -110,12 +111,12 @@ fun actorPreviewCard() {
                 .clip(RoundedCornerShape(8.dp))
         )
         Text(
-            text = "TomCrus",
+            text = stringResource(R.string.sample_text),
             modifier = Modifier,
             style = TextStyle(fontWeight = FontWeight.Bold)
         )
         Text(
-            text = "bill gate",
+            text = stringResource(R.string.sample_text),
             style = TextStyle(fontSize = 12.sp)
         )
     }
