@@ -10,8 +10,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.anil.moviesapp.features.screen.details.DetailScreen
 import com.anil.moviesapp.features.screen.details.DetailViewmodel
+import com.anil.moviesapp.features.screen.home.HomeScreenPopular
 import com.anil.moviesapp.features.screen.home.HomeViewModel
-import com.anil.moviesapp.features.screen.home.MoviesHomeScreen
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
@@ -22,7 +22,7 @@ fun Nav() {
             //val windowSizeClass = calculateWindowSizeClass(activity = MoviesApplication.appContext)
             //val navController = rememberNavController()
             val viewModel = hiltViewModel<HomeViewModel>()
-            MoviesHomeScreen(navController, viewModel)
+            HomeScreenPopular(navController, viewModel)
         }
         composable(
             route = "Details?movies={movies}",
