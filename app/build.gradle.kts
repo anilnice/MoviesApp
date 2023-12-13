@@ -81,13 +81,18 @@ dependencies {
     implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    //Retrofit https://square.github.io/retrofit/ - latest vesion https://github.com/square/retrofit.
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //Gson -> json data to java or kotlin format
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1")
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     // ViewModel utilities for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation("androidx.navigation:navigation-compose:2.7.5")
-    implementation(project(":di"))
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 }
 // Allow references to generated code
 kapt {
